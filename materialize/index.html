@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+  <html>
+  
+    <head>
+	  <title>Food Map</title>
+		<meta name="viewport" content="initial-scale=1.0">
+		<meta charset="utf-8">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 60%;
+      }
+    </style>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+		<!--Import jQuery before materialize.js-->
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="js/materialize.min.js"></script>
+		  
+		<nav>
+		<div class="nav-wrapper">
+		  <div class="col s12">
+			<a href="#!" class="breadcrumb">Homepage</a>
+			<a href="#!" class="breadcrumb">體驗和服推薦店面</a>
+		  </div>
+		</div>
+		</nav>
+
+
+		
+			
+			
+	
+			
+			
+			
+			
+			
+
+
+
+
+
+
+
+		
+	<script>
+	function f()
+	{   
+	   
+		var list =[
+          {"ig":"http://a1.bbkz.net/forum/attachment.php?attachmentid=1374989&thumb=1&d=1417513767",  "tl":"【岡本著物】" ,       "ct":"款式多、距離清水寺近、熱門",                          "lk":"http://www.okamoto-kimono.com/tw/index.html"},
+          {"ig":"http://farm8.staticflickr.com/7056/8687244457_51c65e1ba8.jpg",                       "tl":"【染匠きたむら】" ,   "ct":"質料比較好且花色較典雅",                              "lk":"http://www.sensho-kitamura.jp/info/chinese.html"},
+          {"ig":"http://img.imjanet.com/pixnet/1faa54b587d183f717e83b54dd6d687e.jpg",                 "tl":"【夢館】" ,           "ct":"有詳細的中文介面與台灣服務人員，款式多到會眼花撩亂",  "lk":"http://www.tw-kyoto.yumeyakata.com/"},
+		  {"ig":"https://farm1.staticflickr.com/559/18108567284_1c4ff7bc94_z.jpg",                    "tl":"【夢京都】" ,         "ct":"年輕一點的和服款式、有中文專頁網站、搭配多",          "lk":"http://www.yumekyoto-kimono.com/"},
+		  {"ig":"https://pic.pimg.tw/lisa0205/1444248412-83640553_l.jpg?v=1444248946",                "tl":"【てくてく京都】" ,   "ct":"講究和服穿起來的質感與款式",                          "lk":"http://tekutekukyoto.com/gallery/"},
+		  {"ig":"http://shop-list.wargo.jp/wp-content/uploads/2013/11/shinkyogoku.jpg",               "tl":"【京都Wargo】" ,      "ct":"時尚行的象徵、價格最實惠、髮型設計只要900日圓起！",   "lk":"https://kyotokimono-rental.com/tw/"}
+        ];
+		var str = "";
+		var i;
+		for(i=0;i<list.length;i++)
+        { 
+			str += '<li class="collection-item avatar">';
+			str += '<img src="'+ list[i].ig +'" alt="" class="circle">';
+			str += '<span class="title">' + list[i].tl + '</span>';
+			str += '<p>' + list[i].ct + '</p>';
+			str += '<a href="' + list[i].lk + '" class="secondary-content"><i class="material-icons">grade</i></a>';
+			str += '</li>';
+		}		
+		document.getElementById("demo").innerHTML = str;
+	}
+	</script>
+	
+    <body onload="f()">	 
+	<p>小編也有去過阪神京地區，運氣很好的有遇上滿開的櫻花季，畫面讓人永身難忘，<br></br>但很遺憾的當時沒有租借和服拍照留下紀念，所以決定下次去一定要穿和服走在京都的街道上！<br></br><span style="color:blue;">而且日本櫻花季也要到了呢，想不想在日本最美的季節留下最美的回憶呢？</span><br></br><span style="color:red;">在此小編比較後整理了6間適合台灣人租借和服的店家</span>，<br></br><big><big>就算不懂日語也OK，女孩們趕快收藏起來，快預約準備GO嘍～！！</big></big></p>
+	  <div id="map"></div>
+	  
+	  <ul class="collection" id="demo">
+	  </ul>
+	  
+	  
+	  
+	  
+    <script>
+        
+		var map1;
+		function initMap() {
+		  map1 = new google.maps.Map(document.getElementById('map'), {
+			center: {lat: 34.997384, lng: 135.7702763},
+			zoom: 14
+		  });
+		  
+		  var marker1 = new google.maps.Marker({
+			position: {lat: 34.9948033, lng: 135.7824928},
+			map: map1,
+			title: '【岡本著物】'
+		  });
+		  
+		  var marker2 = new google.maps.Marker({
+			position: {lat: 34.9973254, lng: 135.7791288},
+			map: map1,
+			title: '【染匠きたむら】'
+		  });
+		  
+		  var marker3 = new google.maps.Marker({
+			position: {lat: 34.9960366, lng: 135.7616692},
+			map: map1,
+			title: '【夢館】'
+		  });
+		  
+		  var marker4 = new google.maps.Marker({
+			position: {lat: 34.997968, lng: 135.7650355},
+			map: map1,
+			title: '【夢京都】'
+		  });
+		  
+		  var marker5 = new google.maps.Marker({
+			position: {lat: 34.9979002, lng: 135.7343939},
+			map: map1,
+			title: '【てくてく京都】'
+		  });
+	
+	      var marker6 = new google.maps.Marker({
+			position: {lat: 34.998419, lng: 135.7674167},
+			map: map1,
+			title: '【京都Wargo】'
+		  });
+		  
+		}
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKEq8Ongp27LgkmvatLB6G949KWSbJeh0&callback=initMap"
+        async defer></script>
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+	
+	
+	
+	
+  </html>

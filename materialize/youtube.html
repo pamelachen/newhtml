@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+  <html>
+  
+    <head>
+	  <title>Food Map</title>
+		<meta name="viewport" content="initial-scale=1.0">
+		<meta charset="utf-8">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 60%;
+      }
+    </style>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+		<!--Import jQuery before materialize.js-->
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="js/materialize.min.js"></script>
+		  
+		<nav>
+		<div class="nav-wrapper">
+		  <div class="col s12">
+			<a href="#!" class="breadcrumb">Homepage</a>
+			<a href="#!" class="breadcrumb">YouTube上的和服相關介紹</a>
+		  </div>
+		</div>
+		</nav>
+
+
+<ul class="collection">
+	<div id="VideoThumbs" ><!-- 這裡會產生YouTube Thumbs列出影片 -->
+	
+	</div>
+	<!--Import jQuery before materialize.js-->
+	
+	<script type="text/javascript" >//和服相關介紹的影片
+		var apiKey = "AIzaSyCIlwa-7d7qpKS0Nj5vhI7tb-0minC-qZ8";
+		function getVideos(pid, apiKey) {
+			// PlaylistItems: list 語法參見 https://developers.google.com/youtube/v3/docs/playlistItems/list
+				$.get("https://www.googleapis.com/youtube/v3/playlistItems", {
+				part: "snippet,contentDetails",
+				maxResults: 50,
+				playlistId: pid,
+				key: apiKey},
+				
+				function (data) {
+					//document.getElementById("VideoThumbs").innerHTML += '<div style="color:red;">====================================================================================================================================================</div>';
+					// 傳回值參見 https://developers.google.com/youtube/v3/docs/playlistItems#resource-representation
+					$.each(data.items, function (i, item) {
+					
+					
+					
+						//var str = '<div style="float:left;font-size:small;margin:5px;">';
+					
+						var str = '<li class="collection-item avatar">'
+						str += '<div style="float:left;font-size:small;margin:5px;">';
+						str += '<a href="https://youtu.be/' + item.snippet.resourceId.videoId + '" target="_blank">';
+						str += '<img src="' + item.snippet.thumbnails.default.url + '" alt="" class="circle" />';
+						str += '<span class = "title">'+item.snippet.title+'</span>';					
+						str += '</a>';
+						str += '</div>';
+						
+						if (item.contentDetails.note !== undefined) str += '<a href="' + item.contentDetails.note + '" target="_blank">延伸閱讀</a><br />';
+						
+						str += '</li>'
+						
+						document.getElementById("VideoThumbs").innerHTML += str;
+						
+										
+					})
+				}
+			);
+		}
+		
+		getVideos("PL6In5ErqjZCn17siyJMZhkt3BGOLbKnFg", apiKey)	// @解痛伸展操
+		
+		
+	</script>	
+</ul>
+
+
+
+
+
+
+
+   </body>
+	
+	
+	
+	
+  </html>
